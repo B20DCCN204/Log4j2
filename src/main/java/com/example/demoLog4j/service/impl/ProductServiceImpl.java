@@ -58,5 +58,14 @@ public class ProductServiceImpl implements ProductService {
                 .collect(Collectors.toList());
     }
 
+    @Override
+    public List<ProductDto> getProductByCategoryId(Long id) {
+        logger.info("Fetching products with category id: {}", id);
+        List<ProductEntity> productEntities = productRepository.findProductEntitiesByCategoryId(id);
+        return productEntities.stream()
+                .map(productEntity -> productMapper.toProductDto(productEntity))
+                .collect(Collectors.toList());
+    }
+
 
 }

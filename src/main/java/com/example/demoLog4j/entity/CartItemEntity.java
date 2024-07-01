@@ -19,7 +19,4 @@ public class CartItemEntity extends BaseEntity{
 
     @Column(name = "quantity")
     private Integer quantity;
-
-    @Column(name = "price")
-    private Double price;
 }

@@ -30,7 +30,7 @@ public class ProductEntity extends BaseEntity{
     @JoinColumn(name = "category_id", nullable = false)
     private CategoryEntity category;
 
-    @OneToMany(mappedBy = "product")
+    @OneToMany(mappedBy = "product", orphanRemoval = true)
     private List<CartItemEntity> cartItems = new ArrayList<>();
 
     @OneToMany(mappedBy = "product")

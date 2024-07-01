@@ -15,12 +15,13 @@ public class CartEntity extends BaseEntity{
     @OneToOne(mappedBy = "cart")
     private OrderEntity order;
 
-    @OneToMany(mappedBy = "cart")
+    @OneToMany(mappedBy = "cart", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval = true)
     private List<CartItemEntity> cartItems = new ArrayList<>();
-
-    @Column(name = "total_price")
-    private Double totalPrice;
 
     @Column(name = "note")
     private String note;
+
+    @OneToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private UserEntity user;
 }

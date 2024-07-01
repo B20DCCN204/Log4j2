@@ -5,10 +5,12 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
-@Table(name = "order")
+@Table(name = "`order`")
 @Getter
 @Setter
 public class OrderEntity {
@@ -23,6 +25,9 @@ public class OrderEntity {
     @OneToOne
     @JoinColumn(name = "cartid", nullable = false)
     private CartEntity cart;
+
+    @OneToMany(mappedBy = "order", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval = true)
+    private List<OrderItemEntity> orderItems = new ArrayList<>();
 
     @OneToOne(mappedBy = "order")
     private PaymentEntity payment;

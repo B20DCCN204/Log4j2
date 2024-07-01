@@ -53,4 +53,10 @@ public class ProductApi {
         List<ProductDto> result = productService.searchProduct(keyword);
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
+
+    @GetMapping("/filter/{categoryId}")
+    public ResponseEntity<?> filterProductsByCategory(@PathVariable("categoryId") Long id){
+        List<ProductDto> result = productService.getProductByCategoryId(id);
+        return new ResponseEntity<>(result, HttpStatus.OK);
+    }
 }

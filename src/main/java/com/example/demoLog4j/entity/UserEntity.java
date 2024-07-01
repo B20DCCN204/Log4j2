@@ -29,4 +29,6 @@ public class UserEntity extends BaseEntity{
     @ManyToOne
     @JoinColumn(name = "roleid", nullable = false)
     private RoleEntity role;
+    @OneToOne(mappedBy = "user")
+    private CartEntity cart;
 }
